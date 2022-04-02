@@ -35,6 +35,24 @@ start the server by running
 
 `npm start`
 
+OPTIONAL (DOCKER)
+-----------------
+
+```
+# Build image (pass --build-arg APP_PORT= to specify any port other than 80 *during build*)
+docker build -t node-sonos-http-api:latest .
+
+# Run image in named container, which is removed once it stops (pass -d to detach)
+docker run --net host --name sonos-api --rm node-sonos-http-api:latest
+
+# View current logs
+docker logs -f sonos-api
+
+# Stop running image
+docker container stop sonos-api
+```
+
+
 Now you can control your system by invoking the following commands:
 
 	http://localhost:5005/zones
